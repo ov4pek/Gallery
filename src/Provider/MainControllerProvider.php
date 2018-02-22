@@ -26,10 +26,6 @@ class MainControllerProvider implements ControllerProviderInterface
             return MainController::doGet($app);
         });
 
-//        $controllers->get('/page/{pageNumber}', function ($pageNumber) use ($app) {
-//            return MainController::getPage($app, $pageNumber);
-//        });
-
         return $controllers;
     }
 }

@@ -15,12 +15,6 @@ class SitePostService implements PostService
         return SitePostRepository::getAll($app);
     }
 
-//    public static function getById(Application $app, $id)
-//    {
-//        // TODO: Implement getById() method.
-//    }
-
-
     public static function add(Application $app, Post $post)
     {
         return SitePostRepository::add($app, $post);

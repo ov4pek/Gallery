@@ -13,5 +13,30 @@
 <h1>Hello World!</h1>
 
 <a name="Add post" href="/post/create">Add post</a>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h3>All Posts</h3>
+            <h5>Posts count: {{ numberOfPosts }}</h5>
+            {% for post in posts %}
+            <div>
+                <div>
+                    <img src="{{post.photo}}">
+                    <p>{{post.photo}}"</p>>
+                </div>
+                <div>
+                    <p>
+                        {{post.description}}
+                    </p>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
 </body>
 </html>

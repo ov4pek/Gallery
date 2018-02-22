@@ -49,12 +49,9 @@ class SitePostRepository implements PostRepository
 
     public static function getPostsOnPage(Application $app, $pageNumber)
     {
-        $start = ($pageNumber - 1) * PHOTOS_PER_PAGE;
 
-        $sql = "SELECT p.id, photo, description FROM posts p LIMIT :start,:postNumber;";
+        $sql = "SELECT p.id, photo, description FROM posts p;";
         $sth = $app['db']->prepare($sql);
-        $sth->bindValue("start", $start, PDO::PARAM_INT);
-        $sth->bindValue("postsNumber", PHOTOS_PER_PAGE, PDO::PARAM_INT);
         $sth->execute();
 
         $posts = [];

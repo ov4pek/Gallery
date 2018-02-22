@@ -6,7 +6,6 @@ use Danil;
 use Danil\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Danil\Model\Post;
-use Danil\Common\Common;
 use Danil\Service\SitePostService;
 
 
@@ -18,12 +17,11 @@ class PostController{
 
     public static function createPostPost(Application $app) {
 
-        $path = "/home/danil/PhpstormProjects/Gallery/web/resources/uploads/";
+        $path = "/resources/uploads/";
         $types = array('image/gif', 'image/png', 'image/jpeg');
 
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST')
-        {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (!in_array($_FILES['picture']['type'],$types)) {
                 echo 'Запрещённый тип файла';
                 var_dump($_FILES['picture']['type']);
@@ -37,20 +35,19 @@ class PostController{
             echo $filename . "\n";
             echo $destination;
 
-            if (move_uploaded_file($filename, $destination))
-                echo 'Norm';
-            else
-                echo 'Ne Norm';
+            if (move_uploaded_file($filename, $destination)) {
+                $post = new Post();
+                $post->setPhoto($destination);
+                $post->setDescription($_REQUEST['description']);
 
-            $post = new Post();
-            $post->setPhoto($destination);
-            $post->setDescription($_REQUEST['description']);
+                SitePostService::add($app, $post);
 
-            SitePostService::add($app, $post);
+                return $app->redirect('/');
+            } else {
+                echo "Error";
+            }
         }
 
-
-        return $app->redirect('/');
 
     }
 
