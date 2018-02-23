@@ -28,14 +28,13 @@ class SitePostRepository implements PostRepository
         while ($row = $sth->fetch()) {
             $post = new Post(
                 $row['id'],
-                $row['photo'],
+                stream_get_contents($row['photo']),
                 $row['description']
             );
             $posts[] = $post;
         }
 
         return $posts;
-
     }
 
     public static function add(Application $app, Post $post)
@@ -44,6 +43,7 @@ class SitePostRepository implements PostRepository
             'photo' => $post->getPhoto(),
             'description' => $post->getDescription(),
         ));
+
         return true;
     }
 
