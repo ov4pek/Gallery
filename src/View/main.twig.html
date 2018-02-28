@@ -8,19 +8,24 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
 </head>
 <body>
-<h1>Hello World!</h1>
+<nav class="navbar-inverse navbar navbar-fixed-top">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">Gallery</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
+        <li><a name="Add post" href="/post/create">Add post</a></li>
+    </ul>
+</nav>
 
-<a name="Add post" href="/post/create">Add post</a>
-
-
-<div class="container">
+<div class="container well well-sm">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12" align="center">
             <h3>All Posts</h3>
             <h5>Posts count: {{ numberOfPosts }}</h5>
-            {% for post in posts %}
+            {% for post in posts|reverse %}
             <div>
                 <div>
                     <img src="{{post.photo}}">
@@ -33,7 +38,6 @@
             {% endfor %}
         </div>
     </div>
-
 </div>
 </body>
 </html>

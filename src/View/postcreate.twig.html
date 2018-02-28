@@ -3,13 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Creating Post</title>
-    <link rel="stylesheet" href="/resources/css/editProfile.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
 </head>
 <body>
-<form action="/post/save" enctype="multipart/form-data" method="post">
-    <input name="picture" type="file"/>
-    <input name="description" type="text" />
-    <input type="submit" value="Загрузить" />
-</form>
+<nav class="navbar-inverse navbar navbar-fixed-top">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">Gallery</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
+        <li><a name="Add post" href="/post/create">Add post</a></li>
+    </ul>
+</nav>
+<div class="form-container well well-sm" align="center">
+    <form action="/post/save" enctype="multipart/form-data" method="post">
+        <label for="picture" class="uploadButton">Upload file</label>
+        <input class="btn btn-primary" name="picture" id="picture" type="file"/>
+        <!--<input  name="width"  type="text"/>-->
+        <!--<input  name="height"  type="text"/>-->
+        <select name="sizeType">
+        <option value="1">Same Size</option>
+        <option value="2">320x240</option>
+        <option value="3">640x360</option>
+        </select>
+        <input class="description" name="description" type="text" /><br>
+        <input class="btn btn-primary" type="submit" value="Create" />
+    </form>
+</div>
+
 </body>
 </html>

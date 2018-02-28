@@ -20,8 +20,8 @@ class SitePostService implements PostService
         return SitePostRepository::add($app, $post);
     }
 
-    public static function getPostsOnPage(Application $app, $pageNumber)
-    {
-        return SitePostRepository::getPostsOnPage($app, $pageNumber);
-    }
+//    public static function getPostsOnPage(Application $app, $pageNumber)
+//    {
+//        return SitePostRepository::getPostsOnPage($app, $pageNumber);
+//    }
 }

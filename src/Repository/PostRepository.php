@@ -15,6 +15,6 @@ interface PostRepository
 
     public static function add(Application $app, Post $post);
 
-    public static function getPostsOnPage(Application $app, $pageNumber);
+//    public static function getPostsOnPage(Application $app, $pageNumber);
 
 }
