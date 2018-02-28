@@ -4,7 +4,6 @@ namespace Danil\Controllers;
 
 use Danil;
 use Danil\Application;
-use Symfony\Component\HttpFoundation\Request;
 use Danil\Model\Post;
 use Danil\Service\SitePostService;
 use Danil\SimpleImage;
@@ -23,10 +22,7 @@ class PostController{
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (!in_array($_FILES['picture']['type'], $types)) {
-                echo '<script type="text/javascript">alert("Incorrect file");</script>';
-//                return $app->redirect('/post/create');
-                return '';
-                echo 'Запрещённый тип файла';
+                echo '<script type="text/javascript">alert("Incorrect type of file"); location="/post/create"</script>';
             } else {
                 $string = file_get_contents(ROOT.'/../sizes.json');
                 $objSizes=json_decode($string, true);
@@ -34,16 +30,13 @@ class PostController{
                 $sizeType = $_POST['sizeType'];
 
 
-                if ($sizeType === '1') {
-                    //
-                } elseif ($sizeType === '2') {
+                if ($sizeType === '2') {
                     $widthJson = $objSizes['width'][0];
+                    $heightJson = $objSizes['height'][0];
                 } elseif ($sizeType === '3') {
                     $widthJson = $objSizes['width'][1];
-                } else {
-                    $widthJson = null;
+                    $heightJson = $objSizes['height'][1];
                 }
-
 
 
                 $filename = $_FILES['picture']['tmp_name'];
@@ -52,10 +45,15 @@ class PostController{
                 $image->load($filename);
 
 
-                if ($widthJson !== null) {
-                    $image->resizeToWidth($widthJson);
-                }
+                if ($widthJson !== null && $heightJson !== null) {
 
+                    if ($image->getWidth() > $image->getHeight()){
+                        $image->resizeToWidth($widthJson);
+                    } else {
+                        $image->resizeToHeight($heightJson);
+                    }
+
+                }
 
 
                 if (exif_imagetype($filename) === IMAGETYPE_JPEG) {
