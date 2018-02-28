@@ -56,8 +56,8 @@
     </role>
     <schema id="11" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-02-20.11:25:28.125</IntrospectionTimestamp>
-      <IntrospectionStateNumber>913</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-02-28.20:54:09.408</IntrospectionTimestamp>
+      <IntrospectionStateNumber>934</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -85,7 +85,7 @@
     </sequence>
     <table id="18" parent="11" name="posts">
       <ObjectId>41254</ObjectId>
-      <StateNumber>909</StateNumber>
+      <StateNumber>934</StateNumber>
     </table>
     <column id="19" parent="18" name="id">
       <Position>1</Position>
@@ -97,9 +97,9 @@
     </column>
     <column id="20" parent="18" name="photo">
       <Position>2</Position>
-      <DataType>bytea|0</DataType>
+      <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>909</StateNumber>
+      <StateNumber>934</StateNumber>
     </column>
     <column id="21" parent="18" name="description">
       <Position>3</Position>

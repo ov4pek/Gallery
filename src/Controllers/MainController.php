@@ -22,18 +22,4 @@ class MainController
 
     }
 
-//    public static function getPage(Application $app, $pageNumber) {
-//
-//        $posts = SitePostService::getAll($app);
-//
-//        $postsOnPage = SitePostService::getPostsOnPage($app, $pageNumber);
-//
-//
-//        return $app['twig']->render('main.twig.html', array(
-//            'posts' => $postsOnPage,
-//            'numberOfPosts' => count($posts),
-//        ));
-//
-//    }
-
 }

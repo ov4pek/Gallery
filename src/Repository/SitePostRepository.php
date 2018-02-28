@@ -28,7 +28,7 @@ class SitePostRepository implements PostRepository
         while ($row = $sth->fetch()) {
             $post = new Post(
                 $row['id'],
-                stream_get_contents($row['photo']),
+                $row['photo'],
                 $row['description']
             );
             $posts[] = $post;
@@ -47,24 +47,4 @@ class SitePostRepository implements PostRepository
         return true;
     }
 
-//    public static function getPostsOnPage(Application $app, $pageNumber)
-//    {
-//
-//        $sql = "SELECT p.id, photo, description FROM posts p;";
-//        $sth = $app['db']->prepare($sql);
-//        $sth->execute();
-//
-//        $posts = [];
-//
-//        while ($row = $sth->fetch()) {
-//            $post = new Post(
-//                $row['id'],
-//                $row['photo'],
-//                $row['description']
-//            );
-//            $posts[] = $post;
-//        }
-//
-//        return $posts;
-//    }
 }
