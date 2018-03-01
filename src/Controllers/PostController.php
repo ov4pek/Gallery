@@ -29,7 +29,6 @@ class PostController{
 
                 $sizeType = $_POST['sizeType'];
 
-
                 if ($sizeType === '2') {
                     $widthJson = $objSizes['width'][0];
                     $heightJson = $objSizes['height'][0];

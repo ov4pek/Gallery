@@ -22,12 +22,12 @@
     <form action="/post/save" enctype="multipart/form-data" method="post">
         <label for="picture" class="uploadButton">Upload file</label>
         <input class="btn btn-primary" name="picture" id="picture" type="file"/>
-        <select name="sizeType">
+        <select class="select_size" name="sizeType">
         <option value="1">Same Size</option>
         <option value="2">320x240</option>
         <option value="3">640x360</option>
         </select>
-        <input class="description" name="description" type="text" /><br>
+        <input class="description" name="description" type="text" placeholder="Description..."/><br>
         <input class="btn btn-primary" type="submit" value="Create" />
     </form>
 </div>
